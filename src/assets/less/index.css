@@ -1,0 +1,356 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat-Regular.ttf") format("tff");
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Montserrat", sans-serif;
+}
+#root {
+  height: 100%;
+}
+.header__component {
+  height: 70px;
+  background-color: #232323;
+  color: rgba(255, 255, 255, 0.65);
+  padding: 0 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__component-logo {
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+.header__component-logo span {
+  font-weight: 400;
+}
+.header__component-profile {
+  display: flex;
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+.header__component-icon {
+  margin-left: 10px;
+  font-size: 1.4rem;
+  color: #ffffff;
+}
+.header__component-delimiter {
+  margin: 0 15px;
+}
+.header__component-logout {
+  cursor: pointer;
+  margin: 0 0 0 5px;
+}
+.header__component-logout:hover {
+  color: #fff;
+}
+.main-content {
+  height: calc(100% - 110px);
+}
+.home__container {
+  height: 100%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+}
+.home__container-map {
+  width: 60%;
+  height: 100%;
+  border-right: 2px solid rgba(34, 36, 38, 0.15);
+}
+.home__container-details {
+  position: relative;
+  width: 40%;
+  height: 100%;
+}
+.home__container-actions {
+  height: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 1px solid rgba(34, 36, 38, 0.15);
+}
+.home__container-title {
+  width: 100%;
+  padding: 0 0 12px 0;
+  font-size: 1.2rem;
+  font-weight: 300;
+  text-align: center;
+}
+.home__container-buttons {
+  display: flex;
+  justify-content: center;
+}
+.home__container-dashboard {
+  height: 85%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 35px;
+  overflow: auto;
+}
+.home__container-dashboard .location-label {
+  display: flex;
+  font-size: 1.1rem;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+.home__container-dashboard .location-field .input {
+  width: 100%;
+}
+.home__container-dashboard .location-field .prompt {
+  border-radius: 0.28571429rem;
+}
+.home__container-dashboard .selected-location {
+  padding-top: 20px;
+}
+.home__container-dashboard .event_info {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+}
+.home__container-dashboard .event_info .event-name-label {
+  display: flex;
+  font-size: 1.1rem;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+.home__container-dashboard .event_info .event-organizer-label {
+  display: flex;
+  font-size: 1.1rem;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+.home__container-dashboard .event_info-title {
+  width: 50%;
+  padding-right: 5px;
+}
+.home__container-dashboard .event_info-title .input {
+  width: 100%;
+}
+.home__container-dashboard .event_info-organizer {
+  width: 50%;
+  padding-left: 5px;
+}
+.home__container-dashboard .event_info-organizer .input {
+  width: 100%;
+}
+.home__container-dashboard .event_date .date-label {
+  display: flex;
+  margin-top: 30px;
+  font-size: 1.1rem;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+.home__container-dashboard .event_date .datetime-trigger {
+  display: inline-block;
+}
+.home__container-dashboard .description-label {
+  display: flex;
+  margin-top: 30px;
+  font-size: 1.1rem;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+.home__container-dashboard .description-field {
+  max-height: 120px;
+}
+.home__container-dashboard .category-label {
+  display: flex;
+  margin-top: 30px;
+  font-size: 1.1rem;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+.home__container-dashboard .category-select {
+  width: 100%;
+}
+.home__container-dashboard .event-actions {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+.home__container-dashboard .event_item-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  border-bottom: solid 1px #c1bfbf;
+  cursor: pointer;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+.home__container-dashboard .event_item-container:hover {
+  background-color: #ebebeb;
+}
+.home__container-dashboard .active {
+  background-color: #ebebeb;
+}
+.home__container-dashboard .event_item-date-container {
+  padding-left: 25px;
+}
+.home__container-dashboard .event_item-date-day {
+  padding-top: 5px;
+  font-size: 30px;
+  font-weight: 600;
+  color: #868484;
+}
+.home__container-dashboard .event_item-date-month {
+  font-size: 14px;
+  font-weight: 350;
+  color: #868484;
+}
+.home__container-dashboard .event_item-info-container {
+  width: 100%;
+  padding-left: 35px;
+}
+.home__container-dashboard .event_item-info-title {
+  font-size: 1.3rem;
+  font-weight: 300;
+}
+.home__container-dashboard .event_item-info-date {
+  padding-top: 5px;
+  font-size: 14px;
+}
+.home__container-dashboard .event_item-info-location {
+  font-size: 14px;
+}
+.home__container-dashboard .event_item-info-description {
+  padding-top: 8px;
+  display: flex;
+  align-items: flex-start;
+}
+.home__container-dashboard .event_item-info-description-label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 14px;
+  padding-right: 10px;
+}
+.home__container-dashboard .event_item-info-description-label span {
+  font-weight: 600;
+}
+.home__container-dashboard .event_item-info-organizer {
+  display: flex;
+  align-items: flex-start;
+}
+.home__container-dashboard .event_item-info-organizer-label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 14px;
+  padding-right: 10px;
+}
+.home__container-dashboard .event_item-info-organizer-label span {
+  font-weight: 600;
+}
+.home__container-dashboard .event_item-info-category {
+  padding-bottom: 5px;
+  display: flex;
+  align-items: flex-start;
+}
+.home__container-dashboard .event_item-info-category-label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 14px;
+  padding-right: 10px;
+}
+.home__container-dashboard .event_item-info-category-label span {
+  font-weight: 600;
+}
+.home__container-dashboard .event_item-action-container {
+  align-self: center;
+  padding-right: 10px;
+}
+.home__container-dashboard .event_item-action-container .ui.button:hover {
+  color: #ffffff !important;
+  background-color: #f2711c !important;
+}
+.login__container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-size: cover;
+  background-position: 50%;
+}
+@media only screen and (min-width: 1000px) {
+  .login__container {
+    background-image: url("../images/cover_med.jpg");
+  }
+}
+@media only screen and (max-width: 999px) {
+  .login__container {
+    background-image: url("../images/cover_low.jpg");
+  }
+}
+.login__container .formular__container {
+  color: #555555;
+  width: 400px;
+  min-height: 50%;
+  transition: height 400ms;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 5px #fff;
+}
+@media only screen and (max-width: 500px) {
+  .login__container .formular__container {
+    width: 100%;
+  }
+}
+.login__container .formular__container-title {
+  font-size: 25px;
+  display: block;
+  line-height: 1.2;
+  text-align: center;
+}
+.login__container .formular__container-content {
+  padding: 20px 0;
+}
+.login__container .formular__container-content input {
+  background-color: #f7f7f7;
+}
+.login__container .formular__container .content-email {
+  font-size: 15px;
+  font-weight: 500;
+  display: block;
+  padding: 12px 0;
+}
+.login__container .formular__container .content-password {
+  font-size: 15px;
+  font-weight: 500;
+  display: block;
+  padding: 12px 0;
+}
+.login__container .formular__container .content-sign-in-btn {
+  margin: 20px 0;
+}
+.login__container .formular__container .content-sign-up {
+  display: block;
+  padding: 20px 0 0 0;
+  text-align: center;
+  color: #8f8484;
+}
+.login__container .formular__container .content-sign-up span:nth-child(2) {
+  text-decoration: underline;
+  cursor: pointer;
+  padding-left: 4px;
+}
+.login__container .formular__container .content-sign-up span:nth-child(2):hover {
+  color: #1b1c1d;
+}
+.login__container .sign-up-active {
+  min-height: 70%;
+}
+.login__container .sign-with-msg {
+  min-height: 75%;
+}
+.login__container .sign-in-with-error {
+  min-height: 55%;
+}
