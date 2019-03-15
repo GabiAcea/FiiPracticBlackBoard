@@ -106,6 +106,13 @@ export default function OlMapFunction(opts) {
       return transform(coords, source, destination);
     }
 
+    zoomToCurrentLocation() {
+      //get current geolocation pozition via navigator
+      //after we get the lat/long from response process it with fromLonLat from OpenLayers
+      // with the resulted coordonates update the OL view with map.getView().animate();
+      // pass duration, center and zoom
+    }
+
     centerMap(long, lat) {
       const coords = fromLonLat([long, lat]);
       view.animate({

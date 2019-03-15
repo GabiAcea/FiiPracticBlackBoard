@@ -16,6 +16,7 @@ export default class Home extends React.Component {
             center: [0, 4813697]
         });
         this.appMap = appMap;
+        //call openalyer zoomToCurrentLocation after Home component mounted
     };
 
     onClickCreateEvent = () => {};
