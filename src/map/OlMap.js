@@ -7,7 +7,7 @@ import TileLayer from "ol/layer/Tile.js";
 import WMTS from "ol/source/WMTS.js";
 import WMTSTileGrid from "ol/tilegrid/WMTS.js";
 import { getWidth, getTopLeft } from "ol/extent.js";
-import { get as getProjection, transform, fromLonLat } from "ol/proj";
+import { get as getProjection, transform, fromLonLat, toLonLat } from "ol/proj";
 import Overlay from "ol/Overlay.js";
 import { OSM, TileJSON } from "ol/source/";
 
@@ -137,17 +137,15 @@ export default function OlMapFunction(opts) {
     convertCoordinates(coords, source, destination) {
       return transform(coords, source, destination);
     }
-
-    changeTileLayer() {
+    changeTileLayer(layer) {
       //Remove the current layer
       map.getLayers().forEach(function(layerTile) {
         map.removeLayer(layerTile);
       });
 
       //add the new layer as parameter to the addLayer method
-      map.addLayer();
+      map.addLayer(layer);
     }
-
     zoomToCurrentLocation() {
       //get current geolocation pozition via navigator
       //after we get the lat/long from response process it with fromLonLat from OpenLayers
@@ -161,6 +159,34 @@ export default function OlMapFunction(opts) {
           zoom: 14
         });
       });
+    }
+    getAddressByCoordonates(lat, long, limit = 1) {
+      return new Promise((resolve, reject) => {
+        //pass the coordonates (lat/lon) to the url
+        let url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=????&lon=????&limit=${limit}`;
+
+        fetch(url)
+          .then(response => {
+            //get the response promis and pass it as a json promise
+            return response.json();
+          })
+          .then(function(myJson) {
+            // resolve with the json value
+            resolve(myJson);
+          });
+      });
+    }
+    attachMapEvent(eventType, callback) {
+      // get getAddressByCoordonates reference method which will provide the addres which is related to the coordonates
+      const getAddressEvent = this.getAddressByCoordonates;
+
+      //create the map click event
+
+      //get coordonates based on the click event and use toLonLat() method from openlayers to get longitude and latitude
+
+      //as result we will have the coords, now call referenced method form above with the processed coords
+
+      //when we will get the response use the callback to pass the response value
     }
 
     centerMap(long, lat) {

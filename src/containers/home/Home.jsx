@@ -1,6 +1,6 @@
 import React from "react";
 import OlMapFunction from "../../map/OlMap";
-import { Button } from 'semantic-ui-react';
+import { Button, Divider } from 'semantic-ui-react';
 
 export default class Home extends React.Component {
     constructor(props) {
@@ -24,9 +24,23 @@ export default class Home extends React.Component {
         this.appMap.zoomToCurrentLocation();
         //get layers from the map via getTileLayers method and set them to a state
 
+        //attach on click map event
+        // pass gotAddressResults as  callback method to the attached event
+        this.appMap.attachMapEvent();
+
+        this.setState({
+            layersTiles: this.appMap.getTileLayers()
+        });
     };
 
-    // add method which handles click event and call changeTileLayer method from map with the layer as a parameter 
+    // add method which handles click event and call changeTileLayer method from map with the layer as a parameter
+    onclickChangeLayer = (layer) => {
+        this.appMap.changeTileLayer(layer.layer);
+    };
+
+    gotAddressResults = (addressObj) => {
+        //build the address from the provided address object and set it to the input value state via setState
+    };
 
     render() {
         return (
@@ -59,12 +73,21 @@ export default class Home extends React.Component {
                         </div>
                     </div>
 
-                    <div className="home__container-dashboard"> 
+                    <div className="home__container-dashboard">
                     {/* Loop through the layers with map and build the buttons */}
-                    
-                    {/* Put a name and a click event on button */}
-                        
+                       <div>
+                            {this.state.layersTiles.map((layer, index) => (
+                                // Put a name and a click event on button
+                                <Button key={index} onClick={() => this.onclickChangeLayer(layer)}>{layer.name}</Button>
+                            ))}
+                       </div>
+
+                       <Divider hidden />
+                       <div className="addresSearchInput">
+                           {/*Create a input component from the semantic-ui*/}
+                       </div>
                     </div>
+
                 </div>
             </div>
         );
