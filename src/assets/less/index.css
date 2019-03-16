@@ -48,6 +48,90 @@ body {
 .header__component-logout:hover {
   color: #fff;
 }
+.login__container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-size: cover;
+  background-position: 50%;
+}
+@media only screen and (min-width: 1000px) {
+  .login__container {
+    background-image: url("../images/cover_med.jpg");
+  }
+}
+@media only screen and (max-width: 999px) {
+  .login__container {
+    background-image: url("../images/cover_low.jpg");
+  }
+}
+.login__container .formular__container {
+  color: #555555;
+  width: 400px;
+  min-height: 50%;
+  transition: height 400ms;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 5px #fff;
+}
+@media only screen and (max-width: 500px) {
+  .login__container .formular__container {
+    width: 100%;
+  }
+}
+.login__container .formular__container-title {
+  font-size: 25px;
+  display: block;
+  line-height: 1.2;
+  text-align: center;
+}
+.login__container .formular__container-content {
+  padding: 20px 0;
+}
+.login__container .formular__container-content input {
+  background-color: #f7f7f7;
+}
+.login__container .formular__container .content-email {
+  font-size: 15px;
+  font-weight: 500;
+  display: block;
+  padding: 12px 0;
+}
+.login__container .formular__container .content-password {
+  font-size: 15px;
+  font-weight: 500;
+  display: block;
+  padding: 12px 0;
+}
+.login__container .formular__container .content-sign-in-btn {
+  margin: 20px 0;
+}
+.login__container .formular__container .content-sign-up {
+  display: block;
+  padding: 20px 0 0 0;
+  text-align: center;
+  color: #8f8484;
+}
+.login__container .formular__container .content-sign-up span:nth-child(2) {
+  text-decoration: underline;
+  cursor: pointer;
+  padding-left: 4px;
+}
+.login__container .formular__container .content-sign-up span:nth-child(2):hover {
+  color: #1b1c1d;
+}
+.login__container .sign-up-active {
+  min-height: 70%;
+}
+.login__container .sign-with-msg {
+  min-height: 75%;
+}
+.login__container .sign-in-with-error {
+  min-height: 55%;
+}
 .main-content {
   height: calc(100% - 110px);
 }
@@ -270,87 +354,75 @@ body {
   color: #ffffff !important;
   background-color: #f2711c !important;
 }
-.login__container {
+.todo__container {
   height: 100%;
+}
+.todo__container-title {
+  width: 100%;
+  padding: 30px 0;
+  font-size: 2.5rem;
+  font-weight: 300;
+  text-align: center;
+  color: #f2711c;
+}
+.todo__container-form {
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-size: cover;
-  background-position: 50%;
+  margin-bottom: 20px;
 }
-@media only screen and (min-width: 1000px) {
-  .login__container {
-    background-image: url("../images/cover_med.jpg");
-  }
-}
-@media only screen and (max-width: 999px) {
-  .login__container {
-    background-image: url("../images/cover_low.jpg");
-  }
-}
-.login__container .formular__container {
-  color: #555555;
+.todo__container .ui.input input {
   width: 400px;
-  min-height: 50%;
-  transition: height 400ms;
-  padding: 30px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 5px #fff;
 }
-@media only screen and (max-width: 500px) {
-  .login__container .formular__container {
-    width: 100%;
-  }
+.todo__container-list {
+  width: 50%;
+  margin: auto;
 }
-.login__container .formular__container-title {
-  font-size: 25px;
-  display: block;
-  line-height: 1.2;
-  text-align: center;
+.todo__container-list-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #bfbdbd;
+  padding: 10px;
 }
-.login__container .formular__container-content {
-  padding: 20px 0;
+.todo__container-list-item .content {
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 300;
+  width: 80%;
 }
-.login__container .formular__container-content input {
-  background-color: #f7f7f7;
+.todo__container-list-item .content-text {
+  padding-left: 15px;
+  word-break: break-all;
 }
-.login__container .formular__container .content-email {
+.todo__container-list-item .cut-content-text {
+  text-decoration: line-through;
+  color: #9e9d9d;
+}
+.todo__container-list-item .action {
+  display: flex;
+  align-items: center;
+}
+.todo__container-list-item .action .ui.button:hover {
+  color: #ffffff !important;
+  background-color: #f21c1c !important;
+}
+.todo__container-footer {
+  width: 50%;
+  margin: auto;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e2e2e2;
+  border: 1px solid #bfbdbd;
+  border-top: none;
+  height: 50px;
+  color: #6f6f6f;
   font-size: 15px;
-  font-weight: 500;
-  display: block;
-  padding: 12px 0;
 }
-.login__container .formular__container .content-password {
-  font-size: 15px;
-  font-weight: 500;
-  display: block;
-  padding: 12px 0;
-}
-.login__container .formular__container .content-sign-in-btn {
-  margin: 20px 0;
-}
-.login__container .formular__container .content-sign-up {
-  display: block;
-  padding: 20px 0 0 0;
-  text-align: center;
-  color: #8f8484;
-}
-.login__container .formular__container .content-sign-up span:nth-child(2) {
-  text-decoration: underline;
+.todo__container-footer .action-clear {
   cursor: pointer;
-  padding-left: 4px;
 }
-.login__container .formular__container .content-sign-up span:nth-child(2):hover {
-  color: #1b1c1d;
-}
-.login__container .sign-up-active {
-  min-height: 70%;
-}
-.login__container .sign-with-msg {
-  min-height: 75%;
-}
-.login__container .sign-in-with-error {
-  min-height: 55%;
+.todo__container-footer .action-clear:hover {
+  text-decoration: underline;
 }
