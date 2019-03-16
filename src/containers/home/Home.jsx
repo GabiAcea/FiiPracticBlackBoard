@@ -1,11 +1,14 @@
 import React from "react";
 import OlMapFunction from "../../map/OlMap";
+import { Button } from 'semantic-ui-react';
 
 export default class Home extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {};
+        this.state = {
+            layersTiles: [],
+        };
     }
 
     componentDidMount = () => {
@@ -15,11 +18,15 @@ export default class Home extends React.Component {
             zoom: 3,
             center: [0, 4813697]
         });
+
         this.appMap = appMap;
         //call openalyer zoomToCurrentLocation after Home component mounted
+        this.appMap.zoomToCurrentLocation();
+        //get layers from the map via getTileLayers method and set them to a state
+
     };
 
-    onClickCreateEvent = () => {};
+    // add method which handles click event and call changeTileLayer method from map with the layer as a parameter 
 
     render() {
         return (
@@ -52,7 +59,12 @@ export default class Home extends React.Component {
                         </div>
                     </div>
 
-                    <div className="home__container-dashboard" />
+                    <div className="home__container-dashboard"> 
+                    {/* Loop through the layers with map and build the buttons */}
+                    
+                    {/* Put a name and a click event on button */}
+                        
+                    </div>
                 </div>
             </div>
         );

@@ -9,7 +9,7 @@ import WMTSTileGrid from "ol/tilegrid/WMTS.js";
 import { getWidth, getTopLeft } from "ol/extent.js";
 import { get as getProjection, transform, fromLonLat } from "ol/proj";
 import Overlay from "ol/Overlay.js";
-import OSM from "ol/source/OSM.js";
+import { OSM, TileJSON } from "ol/source/";
 
 let olMap;
 
@@ -93,6 +93,38 @@ export default function OlMapFunction(opts) {
       map.addLayer(wmtsLayer);
     }
 
+    getTileLayers() {
+      const osm = {
+        name: "Osm",
+        iconName: "shop",
+        layer: new TileLayer({ source: new OSM() })
+      };
+      const bordersTile = {
+        name: "Borders",
+        iconName: "download",
+        layer: new TileLayer({
+          source: new TileJSON({
+            url:
+              "https://api.tiles.mapbox.com/v3/mapbox.world-borders-light.json?secure",
+            crossOrigin: "anonymous"
+          })
+        })
+      };
+      const geography = {
+        name: "Geography",
+        iconName: "file",
+        layer: new TileLayer({
+          source: new TileJSON({
+            url:
+              "https://api.tiles.mapbox.com/v3/mapbox.geography-class.json?secure",
+            crossOrigin: "anonymous"
+          })
+        })
+      };
+
+      return [osm, bordersTile, geography];
+    }
+
     getLayerVisibility(layerId) {
       return getLayer(map, layerId).getVisible();
     }
@@ -106,11 +138,29 @@ export default function OlMapFunction(opts) {
       return transform(coords, source, destination);
     }
 
+    changeTileLayer() {
+      //Remove the current layer
+      map.getLayers().forEach(function(layerTile) {
+        map.removeLayer(layerTile);
+      });
+
+      //add the new layer as parameter to the addLayer method
+      map.addLayer();
+    }
+
     zoomToCurrentLocation() {
       //get current geolocation pozition via navigator
       //after we get the lat/long from response process it with fromLonLat from OpenLayers
       // with the resulted coordonates update the OL view with map.getView().animate();
       // pass duration, center and zoom
+      navigator.geolocation.getCurrentPosition(function(pos) {
+        const coords = fromLonLat([pos.coords.longitude, pos.coords.latitude]);
+        map.getView().animate({
+          duration: 3000,
+          center: coords,
+          zoom: 14
+        });
+      });
     }
 
     centerMap(long, lat) {
