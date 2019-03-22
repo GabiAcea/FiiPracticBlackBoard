@@ -5,9 +5,7 @@ import { Menu } from "semantic-ui-react";
 export default class MenuComponent extends Component {
     state = { activeItem: this.props.page };
 
-    handleItemClick = (e, { name }) => {
-        this.setState({ activeItem: name });
-    };
+    handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
     render() {
         const { activeItem } = this.state;
@@ -27,12 +25,12 @@ export default class MenuComponent extends Component {
 
                     <Menu.Item
                         as={Link}
-                        to="/todo"
-                        name="todo"
-                        active={activeItem === "todo"}
+                        to="/my-events"
+                        name="my-events"
+                        active={activeItem === "my-events"}
                         onClick={this.handleItemClick}
                     >
-                        Todo
+                        My Events
                     </Menu.Item>
                 </Menu>
             </div>

@@ -4,12 +4,12 @@ import "firebase/database";
 import "firebase/messaging";
 
 const config = {
-    apiKey: "AIzaSyAw6W6ldxS-tiicchEtt95s8v-dS7xPndk",
-    authDomain: "fiipractictest.firebaseapp.com",
-    databaseURL: "https://fiipractictest.firebaseio.com",
-    projectId: "fiipractictest",
-    storageBucket: "fiipractictest.appspot.com",
-    messagingSenderId: "1067544985014"
+  apiKey: "AIzaSyDMRoy5HwH6cFiLqg_kDzs1dPAvopCZ3QI",
+  authDomain: "fiipracticol.firebaseapp.com",
+  databaseURL: "https://fiipracticol.firebaseio.com",
+  projectId: "fiipracticol",
+  storageBucket: "fiipracticol.appspot.com",
+  messagingSenderId: "897673905673"
 };
 
 const firebaseProvider = firebase.initializeApp(config);

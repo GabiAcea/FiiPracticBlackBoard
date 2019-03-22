@@ -5,7 +5,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import MainLayout from "../components/mainLayout/MainLayout";
 import Login from "../containers/login/Login";
 import Home from "../containers/home/Home";
-import Todo from "../containers/todo/Todo";
+import MyEvents from "../containers/myEvents/MyEvents";
 
 //import WithAuth from "../components/auth/WithAuth";
 
@@ -14,7 +14,7 @@ class App extends React.Component {
         return (
             <Switch>
                 <Route exact path="/login" component={Login} />
-
+                {/* Protected routes */}
                 <Route
                     exact
                     path="/home"
@@ -26,15 +26,15 @@ class App extends React.Component {
                 />
                 <Route
                     exact
-                    path="/todo"
+                    path="/my-events"
                     render={props => (
                         <MainLayout {...props}>
-                            <Todo />
+                            <MyEvents />
                         </MainLayout>
                     )}
                 />
-
                 {/* When you insert a wrong route you will be automatically redirect to login screen */}
+
                 <Redirect from="/" to="/login" />
             </Switch>
         );

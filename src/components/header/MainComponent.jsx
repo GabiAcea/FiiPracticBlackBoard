@@ -3,8 +3,6 @@ import { Redirect } from "react-router-dom";
 
 import AuthServices from "../../services/AuthService";
 
-//TODO = logout here
-
 export default class MainComponent extends Component {
     constructor(props) {
         super(props);
