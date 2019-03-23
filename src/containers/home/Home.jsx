@@ -46,7 +46,6 @@ export default class Home extends React.Component {
             },
             eventList: [],
             scheduledEvents: [],
-            address: "",
             eventListVisible: true,
         };
     }
@@ -229,8 +228,9 @@ export default class Home extends React.Component {
             });
         });
 
-        // this.props.onSaveEvent(this.props.home.formState);
         this.onClickBackToEventList();
+        //display the events on the map
+        this.displayEventsOnMaps();
     };
 
     gotAddressResults = (addressObj) => {
@@ -242,8 +242,7 @@ export default class Home extends React.Component {
         this.handleLocationInput(null, {value: address});
 
         this.setState({
-            address: address,
-            suggestionForLocation: "",
+            suggestionForLocation: address,
         });
     };
 
@@ -267,7 +266,8 @@ export default class Home extends React.Component {
     };
 
     handleLocationInput = (ev, data) => {
-        this.setState({ suggestionForLocation: data.value }, () => {
+        this.setState({ 
+            suggestionForLocation: data.value }, () => {
             if (data.value !== "") {
                 this.setState({
                     isFetchingSearch: true
@@ -394,8 +394,7 @@ export default class Home extends React.Component {
                     >
                         <div className="home__container-dashboard">
                             <div className="location-label">
-                                <Icon name="asterisk" color="red" size="tiny" />
-                                <p>Add a location:</p>
+                                <p>Select A layer:</p>
                             </div>
                             {/* Loop through the layers with map and build the buttons */}
                                 <div>
@@ -407,6 +406,10 @@ export default class Home extends React.Component {
                                     {/*Create a input component from the semantic-ui*/}
                                 <Divider hidden />
                             {/* End */}
+                            <div className="location-label">
+                                <Icon name="asterisk" color="red" size="tiny" />
+                                <p>Add a location:</p>
+                            </div>
                             <Search
                                 fluid
                                 name="location"
@@ -419,9 +422,10 @@ export default class Home extends React.Component {
                                     this.handleLocationInput(ev, data)
                                 }
                                 results={this.state.locationOptions}
-                                value={this.state.suggestionForLocation ? this.state.suggestionForLocation : this.state.address}
+                                value={this.state.suggestionForLocation}
                                 className="location-field"
                             />
+
                             {this.state.formState.location.title !== "" ? (
                                 <div className="selected-location">
                                     <div className="ui image label large">
