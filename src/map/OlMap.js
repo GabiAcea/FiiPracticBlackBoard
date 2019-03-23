@@ -200,6 +200,7 @@ export default function OlMapFunction(opts) {
     }
 
     displayAllEventList(events) {
+      //TODO play a bit with the layers add Stamen
       //doto add the whole list of events here
       let vectorSource = new SourceVector({});
       var iconStyle = new Style({

@@ -94,10 +94,7 @@ export default class Home extends React.Component {
     };
 
     displayEventsOnMaps = () => {
-        //get all events
-        this.initializeEventList().then((resp) => {
-            this.appMap.displayAllEventList(resp);
-        });
+        //TODO get all events from the initializeEventList and send the response to the displayAllEventList method from the map which will create the events layer
     }
 
     initializeEventList = () => {
@@ -239,7 +236,7 @@ export default class Home extends React.Component {
 
         const address = `${a.country ? a.country : ""} ${a.city ? a.city : ""} ${a.postcode ? a.postcode : ""} ${a.road ? a.road : ""}`;
 
-        this.handleLocationInput(null, {value: address});
+        //TODO call the handleLocationInput with the processed value to receive suggestions for the input value
 
         this.setState({
             suggestionForLocation: address,
