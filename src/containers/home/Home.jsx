@@ -81,6 +81,7 @@ export default class Home extends React.Component {
 
     //animation logic between create event and events list
     onClickCreateEvent = () => {
+        //TODO attach map click event and pass the address process function 
         this.appMap.attachMapEvent("click", this.gotAddressResults);
         this.setState({
             eventListVisible: false
@@ -96,6 +97,7 @@ export default class Home extends React.Component {
     displayEventsOnMaps = () => {
         //get all events
         this.initializeEventList().then((resp) => {
+            //it returns the vectorLayer with the events
             this.appMap.displayAllEventList(resp);
         });
     }
@@ -156,6 +158,7 @@ export default class Home extends React.Component {
     };
 
     onCompleteBackToEventList = () => {
+        //TODO remove map click event so it would not be triggered wile clicking the map
         this.appMap.removeMapEvent("click", this.gotAddressResults);
 
         this.setState({
@@ -165,7 +168,9 @@ export default class Home extends React.Component {
 
     // add method which handles click event and call changeTileLayer method from map with the layer as a parameter
     onclickChangeLayer = (layer) => {
+        // also add the current event layer
         this.appMap.changeTileLayer(layer.layer);
+        //TODO also add the current events layer
     };
 
     setNewEvent = (event, userId) => {
@@ -221,28 +226,28 @@ export default class Home extends React.Component {
                 longitude: Longitude
             }
             };
+
             this.setNewEvent(newEvent, payload.userId).then(() => {
                 this.setState({
                     isFetching: false
                 });
+                this.onClickBackToEventList();
+                //TODO call display function to show the new event on the map
             });
         });
-
-        this.onClickBackToEventList();
-        //display the events on the map
-        this.displayEventsOnMaps();
     };
 
     gotAddressResults = (addressObj) => {
         //build the address from the provided address object and set it to the input value state
         const a = addressObj.address;
 
-        const address = `${a.country ? a.country : ""} ${a.city ? a.city : ""} ${a.postcode ? a.postcode : ""} ${a.road ? a.road : ""}`;
+        //TODO build the address from the provided object
 
-        this.handleLocationInput(null, {value: address});
+        //TODO call handleLocationInput which will generate the dropdown results based on the input
 
+        //set the new value
         this.setState({
-            suggestionForLocation: address,
+            suggestionForLocation: "",
         });
     };
 

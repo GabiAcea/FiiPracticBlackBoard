@@ -182,6 +182,7 @@ export default function OlMapFunction(opts) {
       });
     }
     mapClickEventLogic(evt, callback) {
+      //call the API to get results based on coordonates
       const getAddressEvent = this.getAddressByCoordonates;
       const coords = toLonLat(evt.coordinate);
       let lat = coords[1];
@@ -193,10 +194,10 @@ export default function OlMapFunction(opts) {
     }
 
     removeMapEvent(eventType, callback) {
-      map.un(eventType, evt => this.mapClickEventLogic(evt, callback));
+      //remove mapClickEventLogic event
     }
     attachMapEvent(eventType, callback) {
-      map.on(eventType, evt => this.mapClickEventLogic(evt, callback));
+      //add  mapClickEventLogic event
     }
 
     displayAllEventList(events) {
@@ -235,6 +236,8 @@ export default function OlMapFunction(opts) {
         updateWhileAnimating: true,
         updateWhileInteracting: true
       });
+
+      //TODO remove all your vector layers to add the freshly builded events layer
 
       map.addLayer(vectorLayer);
     }
